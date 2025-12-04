@@ -1,0 +1,12 @@
+using Avalonia.Controls;
+
+namespace TestMenuItem;
+
+public partial class MainWindow : Window
+{
+    public MainWindow()
+    {
+        InitializeComponent();
+        this.DataContext = new MainWindowViewModel();
+    }
+}

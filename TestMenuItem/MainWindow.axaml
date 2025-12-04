@@ -1,0 +1,42 @@
+<Window
+    Title="TestMenuItem"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="TestMenuItem.MainWindow"
+    x:DataType="testMenuItem:MainWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:TestMenuItem.Model"
+    xmlns:testMenuItem="clr-namespace:TestMenuItem"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.DataContext>
+        <testMenuItem:MainWindowViewModel />
+    </Design.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="Setting">
+                <MenuItem
+                    Classes="SubItem"
+                    Header="Language"
+                    ItemsSource="{Binding Languages}">
+                    <MenuItem.Styles>
+                        <Style Selector="MenuItem.SubItem MenuItem">
+                            <Setter Property="Header" Value="{Binding Name, DataType=model:ItemModel}" />
+                            <Setter Property="CommandParameter" Value="{Binding}" />
+                            <Setter Property="Command" Value="{Binding ((testMenuItem:MainWindowViewModel)DataContext).LanguageChangedCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                        </Style>
+                    </MenuItem.Styles>
+                </MenuItem>
+            </MenuItem>
+
+        </Menu>
+    </Grid>
+
+
+</Window>
