@@ -5,6 +5,7 @@
     mc:Ignorable="d"
     x:Class="TestMenuItem.MainWindow"
     x:DataType="testMenuItem:MainWindowViewModel"
+    x:Name="Root"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -29,7 +30,7 @@
                         <Style Selector="MenuItem.SubItem MenuItem">
                             <Setter Property="Header" Value="{Binding Name, DataType=model:ItemModel}" />
                             <Setter Property="CommandParameter" Value="{Binding}" />
-                            <Setter Property="Command" Value="{Binding ((testMenuItem:MainWindowViewModel)DataContext).LanguageChangedCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Setter Property="Command" Value="{Binding #Root.((testMenuItem:MainWindowViewModel)DataContext).LanguageChangedCommand}" />
                         </Style>
                     </MenuItem.Styles>
                 </MenuItem>
